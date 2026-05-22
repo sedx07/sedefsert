@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/sedefsert/static/css/main.d0cc7a76.css",
-    "main.js": "/sedefsert/static/js/main.5ef09775.js",
-    "static/js/453.2849396f.chunk.js": "/sedefsert/static/js/453.2849396f.chunk.js",
+    "main.css": "/sedefsert/static/css/main.1c33c8ee.css",
+    "main.js": "/sedefsert/static/js/main.a9fa8da7.js",
     "index.html": "/sedefsert/index.html",
-    "main.d0cc7a76.css.map": "/sedefsert/static/css/main.d0cc7a76.css.map",
-    "main.5ef09775.js.map": "/sedefsert/static/js/main.5ef09775.js.map",
-    "453.2849396f.chunk.js.map": "/sedefsert/static/js/453.2849396f.chunk.js.map"
+    "main.1c33c8ee.css.map": "/sedefsert/static/css/main.1c33c8ee.css.map",
+    "main.a9fa8da7.js.map": "/sedefsert/static/js/main.a9fa8da7.js.map"
   },
   "entrypoints": [
-    "static/css/main.d0cc7a76.css",
-    "static/js/main.5ef09775.js"
+    "static/css/main.1c33c8ee.css",
+    "static/js/main.a9fa8da7.js"
   ]
 }
