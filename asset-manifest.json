@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/sedefsert/static/css/main.1c33c8ee.css",
+    "main.css": "/sedefsert/static/css/main.fecff69e.css",
     "main.js": "/sedefsert/static/js/main.a9fa8da7.js",
     "index.html": "/sedefsert/index.html",
-    "main.1c33c8ee.css.map": "/sedefsert/static/css/main.1c33c8ee.css.map",
+    "main.fecff69e.css.map": "/sedefsert/static/css/main.fecff69e.css.map",
     "main.a9fa8da7.js.map": "/sedefsert/static/js/main.a9fa8da7.js.map"
   },
   "entrypoints": [
-    "static/css/main.1c33c8ee.css",
+    "static/css/main.fecff69e.css",
     "static/js/main.a9fa8da7.js"
   ]
 }
