@@ -1,69 +1,78 @@
 import React, { useEffect, useState } from 'react';
-import './css/utilities.css';
+import styles from './Navbar.module.css';
 
-const sectionIds = ['home', 'about', 'projects', 'experience', 'contact'];
-const sectionNames = {
-  home: 'Welcome',
-  about: 'About',
-  projects: 'Projects',
-  experience: 'Experiences',
-  contact: 'Contact me',
-};
+const sections = [
+  { id: 'home', label: 'Home' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+];
 
-const Navbar = ({ isMobile }) => {
-  const [activeSection, setActiveSection] = useState('home');
+const Navbar = () => {
+  const [active, setActive] = useState('home');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.3,
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    );
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, observerOptions);
-
-    sectionIds.forEach((id) => {
+    sections.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
     });
 
-    return () => {
-      sectionIds.forEach((id) => {
-        const el = document.getElementById(id);
-        if (el) observer.unobserve(el);
-      });
-    };
+    return () => observer.disconnect();
   }, []);
-  
-  if (isMobile) {
-    return (
-      <div className="navbar-mobile-title">
-        {sectionNames[activeSection] || ''}
-      </div>
-    );
-  }
 
-  // 👉 Masaüstü görünüm: klasik navbar
+  const handleClick = (id) => {
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <nav className="navbar">
-      <ul>
-        {sectionIds.map((id) => (
+    <nav className={styles.navbar}>
+      <ul className={styles.navLinks}>
+        {sections.map(({ id, label }) => (
           <li key={id}>
             <a
               href={`#${id}`}
-              className={activeSection === id ? 'active' : ''}
+              className={`${styles.navLink} ${active === id ? styles.navLinkActive : ''}`}
+              onClick={(e) => { e.preventDefault(); handleClick(id); }}
             >
-              {sectionNames[id]}
+              {label}
             </a>
           </li>
         ))}
       </ul>
+
+      <button
+        className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={menuOpen}
+      >
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+        <span className={styles.hamburgerLine} />
+      </button>
+
+      <div className={`${styles.mobileOverlay} ${menuOpen ? styles.mobileOverlayOpen : ''}`}>
+        {sections.map(({ id, label }) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className={`${styles.mobileLink} ${active === id ? styles.mobileLinkActive : ''}`}
+            onClick={(e) => { e.preventDefault(); handleClick(id); }}
+          >
+            {label}
+          </a>
+        ))}
+      </div>
     </nav>
   );
 };

@@ -1,0 +1,195 @@
+.experience {
+  background: transparent;
+  padding: 5rem 4rem;
+}
+
+.wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* ── Vertical timeline ── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.roadLine {
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--cyan), var(--accent), var(--text-muted));
+  z-index: 0;
+}
+
+.stop {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.stop:last-child {
+  margin-bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  left: -2.5rem;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  z-index: 1;
+  transition: all var(--transition);
+}
+
+.dotCurrent {
+  background: var(--cyan);
+  box-shadow: 0 0 0 3px var(--cyan-glow), 0 0 14px rgba(34, 211, 238, 0.25);
+  width: 16px;
+  height: 16px;
+  left: calc(-2.5rem - 1px);
+}
+
+/* ── Card (big, with details inside) ── */
+.card {
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.stopCurrent .card {
+  border-color: rgba(34, 211, 238, 0.50);
+}
+
+/* Card top: role + year */
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.role {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.2rem;
+}
+
+.company {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.yearSide {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.year {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  letter-spacing: 0.3px;
+}
+
+.yearCurrent {
+  color: var(--cyan);
+}
+
+.badge {
+  display: inline-block;
+  margin-top: 0.3rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.12rem 0.45rem;
+  border-radius: 10px;
+  background: var(--cyan-glow);
+  color: var(--cyan);
+  border: 1px solid rgba(34, 211, 238, 0.2);
+}
+
+/* Detail items inside card */
+.detailList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.detailItem {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 0.3rem 0 0.3rem 1.2rem;
+  position: relative;
+}
+
+.detailItem::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent-light);
+  font-size: 1.1rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 700px) {
+  .experience {
+    padding: 3rem 1.25rem;
+  }
+
+  .timeline {
+    padding-left: 1.75rem;
+  }
+
+  .dot {
+    left: -1.75rem;
+  }
+
+  .dotCurrent {
+    left: calc(-1.75rem - 1px);
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .cardTop {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .yearSide {
+    text-align: left;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .detailItem {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem 0.5rem 1.25rem;
+  }
+}
